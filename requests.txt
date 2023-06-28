@@ -1,4 +1,34 @@
 1. SELECT * FROM users
+
 2. SELECT * FROM users ORDER BY last_name
+
 3. SELECT last_name FROM users ORDER BY registration_date DESC LIMIT 1
-4. 
+
+4. SELECT * FROM users WHERE birthdate LIKE '%-07-%'
+
+5. SELECT COUNT(*) FROM users
+
+6. SELECT users.last_name, addresses.city
+   FROM users JOIN addresses 
+   ON users.address_id = addresses.id
+   
+7. SELECT users.last_name, addresses.number 
+   FROM users JOIN addresses 
+   ON users.address_id = addresses.id 
+   WHERE addresses.number IS NULL
+
+8. SELECT * FROM products WHERE price > 1000
+
+9. SELECT products.name, pictures.caption
+   FROM products JOIN pictures
+   ON products.id = pictures.product_id
+  
+10. SELECT products.name, categories.title
+    FROM products 
+    JOIN products_categories
+    ON products.id = products_categories.product_id
+    JOIN categories
+    ON categories.id = products_categories.category_id
+    WHERE categories.title = 'Voyage'
+    
+11. SELECT users.last_name, orders.
