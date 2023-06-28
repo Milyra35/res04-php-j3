@@ -1,0 +1,4 @@
+1. SELECT * FROM users
+2. SELECT * FROM users ORDER BY last_name
+3. SELECT last_name FROM users ORDER BY registration_date DESC LIMIT 1
+4. 
