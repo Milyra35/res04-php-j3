@@ -31,4 +31,37 @@
     ON categories.id = products_categories.category_id
     WHERE categories.title = 'Voyage'
     
-11. SELECT users.last_name, orders.
+11. SELECT users.id, COUNT(*) AS total_commandes
+    FROM users
+    JOIN orders ON users.id = orders.user_id
+    GROUP BY users.id
+    HAVING COUNT(*) > 10;
+    
+12. // Ne fonctionne pas
+    SELECT orders.reference
+    FROM orders
+    JOIN users 
+    ON orders.user_id = users.id
+    JOIN products_orders 
+    ON orders.id = products_orders.order_id
+    JOIN products
+    ON products_orders.order_id = products.id
+    WHERE users.id = (SELECT MIN(id) FROM users)
+    
+    // Ne me retourne aucune ligne
+    SELECT orders.reference
+    FROM orders
+    JOIN users ON orders.user_id = users.id
+    JOIN products_orders ON orders.id = products_orders.order_id
+    JOIN products ON products_orders.product_id = products.id
+    WHERE users.id = (SELECT MIN(id) FROM users)
+    
+    SELECT users.last_name, users.first_name, products.name
+    FROM orders
+    JOIN users
+    ON orders.user_id = users.id
+    JOIN products_orders
+    ON orders.id = products_orders.order_id
+    JOIN products
+    ON products_orders.product_id = products.id
+    WHERE users.id = SELECT MIN(id) FROM users
